@@ -30,6 +30,7 @@ parser.add_argument('--task', required=True, type=str, help='Task to run', choic
                                                                                     'Single_Image_Defocus_Deblurring',
                                                                                     'Deraining',
                                                                                     'Real_Denoising',
+                                                                                    'UWEnhancement',
                                                                                     'Gaussian_Gray_Denoising',
                                                                                     'Gaussian_Color_Denoising'])
 parser.add_argument('--tile', type=int, default=None, help='Tile size (e.g 720). None means testing on the original resolution image')
@@ -56,6 +57,8 @@ def get_weights_and_parameters(task, parameters):
         weights = os.path.join('Defocus_Deblurring', 'pretrained_models', 'single_image_defocus_deblurring.pth')
     elif task == 'Deraining':
         weights = os.path.join('Deraining', 'pretrained_models', 'deraining.pth')
+    elif task == 'UWEnhancement':
+        weights = os.path.join('UWEnhancement', 'pretrained_models', 'net_g_240000.pth')
     elif task == 'Real_Denoising':
         weights = os.path.join('Denoising', 'pretrained_models', 'real_denoising.pth')
         parameters['LayerNorm_type'] =  'BiasFree'

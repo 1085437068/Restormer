@@ -131,7 +131,7 @@ def main():
     # parse options, set distributed setting, set ramdom seed
     opt = parse_options(is_train=True)
 
-    torch.backends.cudnn.benchmark = True
+    torch.backends.cudnn.benchmark = False #设置PyTorch仅在需要时分配显存
     # torch.backends.cudnn.deterministic = True
 
     # automatic resume ..
@@ -314,7 +314,7 @@ def main():
                          opt['val']['save_img'])
     if tb_logger:
         tb_logger.close()
-
+    torch.cuda.empty_cache()  # empty GPU memory
 
 if __name__ == '__main__':
     main()
